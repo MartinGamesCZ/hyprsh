@@ -24,4 +24,15 @@ export class API {
 
     return data;
   }
+
+  static async post<T, B>(path: string, body: B): Promise<T | IAPIError> {
+    const { data } = await this.connector.post<T>(path, body).catch((e) => ({
+      data: e.response?.data ?? {
+        message: "Unknown error",
+        error: "UNKNOWN",
+      },
+    }));
+
+    return data;
+  }
 }

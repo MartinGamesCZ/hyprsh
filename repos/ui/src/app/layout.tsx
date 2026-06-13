@@ -19,9 +19,9 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`h-screen w-screen antialiased dark ${fontJakarta.variable}`}
+      className={`w-screen antialiased dark ${fontJakarta.variable}`}
     >
-      <body className="h-screen w-screen overflow-hidden">{children}</body>
+      <body className="w-screen overflow-hidden">{children}</body>
     </html>
   );
 }

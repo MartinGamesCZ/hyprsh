@@ -3,6 +3,7 @@ import { ReactNode } from "react";
 interface ITBTextProps {
   children: ReactNode | ReactNode[];
   size?: "xs" | "sm" | "md" | "lg" | "xl";
+  className?: string;
 }
 
 export function TBText(props: ITBTextProps) {
@@ -16,7 +17,7 @@ export function TBText(props: ITBTextProps) {
 
   return (
     <p
-      className={`text-ctp-subtext0 ${sizes[props.size ?? "md"]} select-none pointer-events-none`}
+      className={`${sizes[props.size ?? "sm"]} select-none pointer-events-none ${props.className ?? "text-ctp-subtext0"}`}
     >
       {props.children}
     </p>
