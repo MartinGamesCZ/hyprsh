@@ -18,11 +18,11 @@ export default function Page() {
         TBQuickSettingsWidget,
       ]}
     >
-      <TBWidgetGroup gap={4}>
+      <TBWidgetGroup className="gap-4">
         <TBWidget id="os-icon" />
         <TBWidget id="window-title" />
       </TBWidgetGroup>
-      <TBWidgetGroup>
+      <TBWidgetGroup className="gap-[1px]">
         <TBWidget id="quick-settings" />
         <TBWidget id="clock" />
       </TBWidgetGroup>

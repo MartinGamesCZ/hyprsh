@@ -15,7 +15,9 @@ export function TBText(props: ITBTextProps) {
   };
 
   return (
-    <p className={`text-ctp-subtext0 ${sizes[props.size ?? "md"]}`}>
+    <p
+      className={`text-ctp-subtext0 ${sizes[props.size ?? "md"]} select-none pointer-events-none`}
+    >
       {props.children}
     </p>
   );

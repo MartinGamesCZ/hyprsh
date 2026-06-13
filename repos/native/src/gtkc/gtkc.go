@@ -66,15 +66,16 @@ func GtkcSetNamespace(window *GtkWidget, namespace string) {
 	C.free(unsafe.Pointer(cNS))
 }
 
-func GtkcSetAnchorAndSize(window *GtkWidget, w, h, margin int) {
+func GtkcSetAnchorAndSize(window *GtkWidget, w, h int) {
 	C.gtk_layer_set_anchor((*C.GtkWindow)(unsafe.Pointer(window)), C.GTK_LAYER_SHELL_EDGE_TOP, 1)
 	C.gtk_layer_set_anchor((*C.GtkWindow)(unsafe.Pointer(window)), C.GTK_LAYER_SHELL_EDGE_LEFT, 0)
 	C.gtk_layer_set_anchor((*C.GtkWindow)(unsafe.Pointer(window)), C.GTK_LAYER_SHELL_EDGE_RIGHT, 0)
 
 	C.gtk_widget_set_size_request((*C.GtkWidget)(window), C.int(w), C.int(h))
-	C.gtk_layer_set_margin((*C.GtkWindow)(unsafe.Pointer(window)), C.GTK_LAYER_SHELL_EDGE_TOP, C.int(margin))
+}
 
-	C.gtk_layer_set_exclusive_zone((*C.GtkWindow)(unsafe.Pointer(window)), C.int(h+margin))
+func GtkcSetExclusiveZone(window *GtkWidget, h int) {
+	C.gtk_layer_set_exclusive_zone((*C.GtkWindow)(unsafe.Pointer(window)), C.int(h))
 }
 
 func GtkcSetInputRegion(window *GtkWidget, x, y, w, h int) {

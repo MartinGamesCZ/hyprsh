@@ -2,17 +2,12 @@ import { ReactNode } from "react";
 
 interface ITBWidgetGroupProps {
   children: ReactNode | ReactNode[];
-  gap?: number;
+  className?: string;
 }
 
 export function TBWidgetGroup(props: ITBWidgetGroupProps) {
-  const defaultedProps = {
-    ...props,
-    gap: props.gap ?? 2,
-  };
-
   return (
-    <div className={`flex flex-row gap-${defaultedProps.gap} items-center`}>
+    <div className={props.className + " flex flex-row items-center gap-2"}>
       {props.children}
     </div>
   );

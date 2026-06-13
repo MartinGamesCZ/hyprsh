@@ -12,8 +12,8 @@ interface ITBShellProps {
 export function TBShell(props: ITBShellProps) {
   return (
     <TBWidgetContextProvider widgets={props.widgets.map((W) => new W())}>
-      <div className="w-screen h-screen">
-        <div className="w-full h-full bg-ctp-base px-5 flex flex-row items-center justify-between">
+      <div className="w-screen h-[32px]">
+        <div className="w-full h-full bg-ctp-base pl-5 pr-3 flex flex-row items-center justify-between">
           {props.children}
         </div>
       </div>

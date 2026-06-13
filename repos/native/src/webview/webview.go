@@ -5,13 +5,47 @@ package webview
 #include <gtk/gtk.h>
 #include <webkit2/webkit2.h>
 #include <gtk-layer-shell.h>
+#include <stdlib.h>
+#include "webview.h"
 */
 import "C"
 import (
+	"sync"
 	"unsafe"
 )
 
 type GtkWidget = *C.GtkWidget
+type BindCallback func(string)
+
+var (
+	callbacksMu sync.RWMutex
+	callbacks   = make(map[string]BindCallback)
+)
+
+//export go_script_message_received
+func go_script_message_received(cHandlerName *C.char, cMessage *C.char) {
+	handlerName := C.GoString(cHandlerName)
+	message := C.GoString(cMessage)
+
+	callbacksMu.RLock()
+	cb, exists := callbacks[handlerName]
+	callbacksMu.RUnlock()
+
+	if exists && cb != nil {
+		cb(message)
+	}
+}
+
+func BindFunction(webview GtkWidget, name string, callback BindCallback) {
+	callbacksMu.Lock()
+	callbacks[name] = callback
+	callbacksMu.Unlock()
+
+	cName := C.CString(name)
+	defer C.free(unsafe.Pointer(cName))
+
+	C.webview_bind_function((*C.WebKitWebView)(unsafe.Pointer(webview)), cName)
+}
 
 func CreateWebview() GtkWidget {
 	return C.webkit_web_view_new()

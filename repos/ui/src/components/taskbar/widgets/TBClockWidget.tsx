@@ -1,6 +1,7 @@
 "use client";
 
 import { TBText } from "@/components/base/taskbar/TBText";
+import { TBWidgetContainer } from "@/components/base/taskbar/TBWidgetContainer";
 import { ITBWidgetDefinition } from "@/types/taskbar/widget";
 import { ComponentType, useEffect, useState } from "react";
 
@@ -14,15 +15,23 @@ function TBClockWidgetComponent() {
   const [time, setTime] = useState<string | null>(null);
 
   useEffect(() => {
-    const i = setInterval(() => {
+    const update = () => {
       const date = new Date();
       setTime(
         `${date.getHours().toString().padStart(2, "0")}:${date.getMinutes().toString().padStart(2, "0")}`,
       );
-    }, 1000);
+    };
+
+    update();
+
+    const i = setInterval(update, 1000);
 
     return () => clearInterval(i);
   }, []);
 
-  return <TBText size="sm">{time}</TBText>;
+  return (
+    <TBWidgetContainer>
+      <TBText size="sm">{time}</TBText>
+    </TBWidgetContainer>
+  );
 }
