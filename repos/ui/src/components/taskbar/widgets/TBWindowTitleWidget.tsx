@@ -38,5 +38,5 @@ function TBWindowTitleWidgetComponent() {
     };
   }, [fetchTitle]);
 
-  return <TBText>{title}</TBText>;
+  return <TBText size="sm">{title}</TBText>;
 }

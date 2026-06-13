@@ -24,5 +24,5 @@ function TBClockWidgetComponent() {
     return () => clearInterval(i);
   }, []);
 
-  return <TBText>{time}</TBText>;
+  return <TBText size="sm">{time}</TBText>;
 }

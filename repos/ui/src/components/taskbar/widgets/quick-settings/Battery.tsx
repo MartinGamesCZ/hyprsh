@@ -70,7 +70,7 @@ export function TBQSWBattery() {
 
     const i = setInterval(() => {
       fetchDetails();
-    }, 5000);
+    }, 1000);
 
     return () => clearInterval(i);
   }, [fetchDetails]);
