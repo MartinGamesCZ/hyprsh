@@ -6,7 +6,6 @@ import { TBQSWWifi } from "./quick-settings/Wifi";
 import { TBQSWBluetooth } from "./quick-settings/Bluetooth";
 import { TBQSWBattery } from "./quick-settings/Battery";
 import { TBWidgetContainer } from "@/components/base/taskbar/TBWidgetContainer";
-import { TBPopup } from "@/components/base/taskbar/TBPopup";
 import { TBQuickSettingsPopup } from "../popups/TBQuickSettingsPopup";
 import { useOnClickOutside } from "@/hooks/useOnClickOutside";
 

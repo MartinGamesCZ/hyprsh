@@ -35,4 +35,12 @@ export class API {
 
     return data;
   }
+
+  static sse(path: string): EventSource {
+    const eventSource = new EventSource(
+      `${this.connector.defaults.baseURL}${path.startsWith("/") ? "" : "/"}${path}`,
+    );
+
+    return eventSource;
+  }
 }

@@ -4,6 +4,7 @@ import { HyprlandModule } from './modules/hyprland/hyprland.module';
 import { NetworkModule } from './modules/network/network.module';
 import { ServicesModule } from './services/services.module';
 import { PowerModule } from './modules/power/power.module';
+import { EventsModule } from './modules/events/events.module';
 
 @Module({
   imports: [
@@ -12,6 +13,7 @@ import { PowerModule } from './modules/power/power.module';
     HyprlandModule,
     NetworkModule,
     PowerModule,
+    EventsModule,
   ],
 })
 export class AppModule {}
